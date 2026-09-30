@@ -41,6 +41,49 @@ body{
    PANTALLA DE INICIO
 ========================= */
 
+TYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Para William ❤️</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap');
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+:root{
+    --beige:#e8dfd2;
+    --cream:#f8f5ef;
+    --white:#ffffff;
+    --red:#a51d2d;
+    --darkred:#70111c;
+    --black:#171717;
+    --gray:#555;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Montserrat',sans-serif;
+    background:var(--cream);
+    color:var(--black);
+    overflow-x:hidden;
+}
+
+/* =========================
+   PANTALLA DE INICIO
+========================= */
+
 #inicio{
     min-height:100vh;
     display:flex;
@@ -133,7 +176,373 @@ body{
     99%{left:-120px;transform:scaleX(-1)}
     100%{transform:scaleX(1)}
 }
+/* =========================
+   NUEVA PANTALLA INICIAL
+========================= */
 
+#inicio{
+    min-height:100vh;
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(165,29,45,.18),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #f8f3eb,
+            #e4d8c9
+        );
+}
+
+
+/* LUCES DE FONDO */
+
+#inicio .luces{
+    position:absolute;
+    inset:-30%;
+    pointer-events:none;
+
+    background:
+        radial-gradient(
+            circle at 20% 30%,
+            rgba(165,29,45,.16),
+            transparent 20%
+        ),
+        radial-gradient(
+            circle at 80% 70%,
+            rgba(165,29,45,.13),
+            transparent 20%
+        );
+
+    animation:
+        moverLuces 8s ease-in-out infinite alternate;
+}
+
+@keyframes moverLuces{
+
+    0%{
+        transform:translate(-3%,-2%) scale(1);
+    }
+
+    100%{
+        transform:translate(3%,2%) scale(1.08);
+    }
+
+}
+
+
+/* LINEAS DE LA PISTA */
+
+.linea-pista{
+    position:absolute;
+    height:2px;
+    width:140%;
+    left:-20%;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            transparent 0px,
+            transparent 35px,
+            rgba(165,29,45,.18) 35px,
+            rgba(165,29,45,.18) 70px
+        );
+
+    transform:rotate(-7deg);
+}
+
+.linea1{
+    top:22%;
+}
+
+.linea2{
+    top:78%;
+}
+
+.linea3{
+    top:88%;
+}
+
+
+/* TEXTO PEQUEÑO */
+
+#inicio .mini{
+    position:relative;
+    z-index:3;
+}
+
+
+/* WILLIAM */
+
+#inicio .titulo{
+    position:relative;
+    z-index:3;
+
+    letter-spacing:3px;
+
+    animation:
+        aparecerTitulo 1.2s ease both;
+}
+
+@keyframes aparecerTitulo{
+
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+
+/* NOMBRE DE CARIÑO */
+
+.subtitulo-especial{
+
+    position:relative;
+    z-index:3;
+
+    color:var(--red);
+
+    font-size:14px;
+
+    font-weight:800;
+
+    letter-spacing:4px;
+
+    margin-top:-5px;
+
+    margin-bottom:20px;
+
+    animation:
+        aparecerTitulo 1.5s ease both;
+
+}
+
+
+/* AUTO PRINCIPAL */
+
+.auto-principal{
+
+    position:absolute;
+
+    bottom:18%;
+
+    left:-100px;
+
+    font-size:65px;
+
+    z-index:4;
+
+    filter:
+        drop-shadow(
+            0 15px 12px rgba(0,0,0,.25)
+        );
+
+}
+
+
+/* ANIMACIÓN DEL AUTO */
+
+.auto-salida{
+
+    animation:
+        autoSalida 2.2s
+        cubic-bezier(.4,0,.2,1)
+        forwards;
+
+}
+
+
+@keyframes autoSalida{
+
+    0%{
+        left:-120px;
+        transform:scale(1);
+    }
+
+    35%{
+        left:30%;
+        transform:scale(1.08);
+    }
+
+    70%{
+        left:70%;
+        transform:scale(1.12);
+    }
+
+    100%{
+        left:120%;
+        transform:scale(1.2);
+    }
+
+}
+
+
+/* =========================
+   CUENTA REGRESIVA
+========================= */
+
+#cuentaRegresiva{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:200;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #f5e9dc,
+            #d7c8b8
+        );
+
+}
+
+
+#cuentaRegresiva.activa{
+
+    display:flex;
+
+}
+
+
+.cuenta-contenido{
+
+    width:100%;
+
+    padding:30px;
+
+}
+
+
+.texto-cuenta{
+
+    color:var(--red);
+
+    font-size:12px;
+
+    font-weight:800;
+
+    letter-spacing:4px;
+
+    margin-bottom:20px;
+
+}
+
+
+#numeroCuenta{
+
+    font-family:'Playfair Display',serif;
+
+    font-size:clamp(
+        130px,
+        35vw,
+        230px
+    );
+
+    line-height:1;
+
+    color:var(--black);
+
+    animation:
+        numeroEntrada .7s
+        ease both;
+
+}
+
+
+@keyframes numeroEntrada{
+
+    0%{
+
+        opacity:0;
+
+        transform:
+            scale(.4)
+            rotate(-10deg);
+
+    }
+
+    60%{
+
+        opacity:1;
+
+        transform:
+            scale(1.15)
+            rotate(3deg);
+
+    }
+
+    100%{
+
+        transform:
+            scale(1)
+            rotate(0);
+
+    }
+
+}
+
+
+/* SEMÁFORO */
+
+.barra-salida{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:12px;
+
+    margin-top:25px;
+
+}
+
+
+.barra-salida span{
+
+    width:14px;
+
+    height:14px;
+
+    border-radius:50%;
+
+    background:#cfc3b5;
+
+    transition:.3s;
+
+}
+
+
+.barra-salida span.activa{
+
+    background:var(--red);
+
+    box-shadow:
+        0 0 18px rgba(165,29,45,.6);
+
+}
 /* =========================
    PISTA
 ========================= */
@@ -643,10 +1052,111 @@ const total = 5;
    ENTRAR
 ========================= */
 
-function entrar(){
+function arrancar(){
 
-    document.getElementById("pista")
-    .scrollIntoView({behavior:"smooth"});
+    const boton =
+        document.getElementById("botonArrancar");
+
+    const auto =
+        document.getElementById("autoPrincipal");
+
+    const cuenta =
+        document.getElementById("cuentaRegresiva");
+
+    const numero =
+        document.getElementById("numeroCuenta");
+
+    const luces =
+        document.querySelectorAll(
+            ".barra-salida span"
+        );
+
+
+    /* DESACTIVAR BOTÓN */
+
+    boton.disabled = true;
+
+    boton.style.opacity = "0.5";
+
+
+    /* AUTO SALE */
+
+    auto.classList.add("auto-salida");
+
+
+    /* ESPERAR UN POQUITO */
+
+    setTimeout(() => {
+
+        cuenta.classList.add("activa");
+
+    }, 800);
+
+
+    /* CUENTA REGRESIVA */
+
+    let numeros = ["3","2","1","GO!"];
+
+    let indice = 0;
+
+
+    function cambiarNumero(){
+
+        numero.innerText =
+            numeros[indice];
+
+
+        numero.style.animation = "none";
+
+        void numero.offsetWidth;
+
+        numero.style.animation =
+            "numeroEntrada .7s ease both";
+
+
+        /* ENCENDER SEMÁFORO */
+
+        if(indice < 3){
+
+            luces[indice]
+            .classList.add("activa");
+
+        }
+
+
+        indice++;
+
+
+        if(indice < numeros.length){
+
+            setTimeout(
+                cambiarNumero,
+                900
+            );
+
+        }else{
+
+            setTimeout(() => {
+
+                cuenta.classList.remove(
+                    "activa"
+                );
+
+
+                document.getElementById("pista")
+                .scrollIntoView({
+                    behavior:"smooth"
+                });
+
+
+            },1000);
+
+        }
+
+    }
+
+
+    cambiarNumero();
 
 }
 
