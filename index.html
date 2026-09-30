@@ -1499,6 +1499,79 @@ function confeti(){
 }
 
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
 
+    const boton = document.getElementById("botonArrancar");
+
+    if (!boton) return;
+
+    boton.onclick = function () {
+
+        const inicio = document.getElementById("inicio");
+        const cuenta = document.getElementById("cuentaRegresiva");
+        const numero = document.getElementById("numeroCuenta");
+        const auto = document.getElementById("autoPrincipal");
+
+        if (auto) {
+            auto.classList.add("auto-salida");
+        }
+
+        if (cuenta) {
+            cuenta.classList.add("activa");
+        }
+
+        const numeros = ["3", "2", "1", "GO!"];
+        let i = 0;
+
+        function contar() {
+
+            if (numero) {
+                numero.textContent = numeros[i];
+
+                numero.style.animation = "none";
+                void numero.offsetWidth;
+                numero.style.animation =
+                    "numeroEntrada .7s ease both";
+            }
+
+            i++;
+
+            if (i < numeros.length) {
+
+                setTimeout(contar, 900);
+
+            } else {
+
+                setTimeout(function () {
+
+                    if (cuenta) {
+                        cuenta.classList.remove("activa");
+                    }
+
+                    const pista =
+                        document.getElementById("pista");
+
+                    if (pista) {
+
+                        pista.scrollIntoView({
+                            behavior: "smooth"
+                        });
+
+                    } else if (inicio) {
+
+                        inicio.style.display = "none";
+
+                    }
+
+                }, 900);
+            }
+        }
+
+        contar();
+    };
+
+});
+</script>
 </body>
   </html>
