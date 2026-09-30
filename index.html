@@ -19,28 +19,13 @@ html {
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background: #f8efe5;
-    color: #241c19;
+    background: #f8eee5;
+    color: #2b211e;
     overflow-x: hidden;
 }
 
 /* =========================
-   FONDO GENERAL
-========================= */
-
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    background:
-        radial-gradient(circle at 10% 20%, rgba(255,255,255,.7), transparent 25%),
-        radial-gradient(circle at 90% 80%, rgba(180,0,0,.06), transparent 25%);
-    z-index: -1;
-}
-
-/* =========================
-   PANTALLA DE INICIO
+   INICIO
 ========================= */
 
 #inicio {
@@ -48,50 +33,1308 @@ body::before {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 25px;
     text-align: center;
+    padding: 25px;
     position: relative;
     overflow: hidden;
 }
 
 .inicio-contenido {
-    max-width: 800px;
-    animation: aparecer 1.2s ease;
+    max-width: 850px;
+    animation: aparecer 1s ease;
 }
 
 .mini-titulo {
     font-size: 13px;
     letter-spacing: 4px;
     font-weight: bold;
-    color: #8b1e1e;
+    color: #8d1717;
     margin-bottom: 20px;
-}
-
-.titulo-principal {
-    font-size: clamp(42px, 10vw, 90px);
-    line-height: .95;
-    font-weight: 900;
-    text-transform: uppercase;
-    color: #a71919;
-    text-shadow: 4px 4px 0 #f1d9c5;
-    margin-bottom: 25px;
-}
-
-.subtitulo {
-    font-size: 18px;
-    line-height: 1.6;
-    max-width: 650px;
-    margin: auto;
-    color: #493b36;
 }
 
 .auto-inicio {
     font-size: 70px;
-    margin: 25px 0;
-    animation: moverAuto 2s infinite ease-in-out;
+    margin-bottom: 20px;
+    animation: autoMover 2s infinite ease-in-out;
+}
+
+.titulo-principal {
+    font-size: clamp(40px, 10vw, 82px);
+    line-height: .95;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #a81717;
+    text-shadow: 4px 4px 0 #ead3c1;
+    margin-bottom: 25px;
+}
+
+.subtitulo {
+    max-width: 650px;
+    margin: auto;
+    font-size: 18px;
+    line-height: 1.7;
+    color: #574640;
 }
 
 .boton {
     margin-top: 30px;
     border: none;
-    background: #b
+    background: #ad1515;
+    color: white;
+    padding: 17px 38px;
+    border-radius: 50px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 8px 22px rgba(100,0,0,.25);
+    transition: .3s;
+}
+
+.boton:hover {
+    transform: translateY(-4px);
+    background: #8f1010;
+}
+
+.boton:active {
+    transform: scale(.96);
+}
+
+.decoracion {
+    position: absolute;
+    font-size: 30px;
+    opacity: .6;
+    animation: flotar 4s infinite ease-in-out;
+}
+
+.d1 { top: 10%; left: 8%; }
+.d2 { top: 20%; right: 9%; animation-delay: 1s; }
+.d3 { bottom: 14%; left: 12%; animation-delay: 2s; }
+.d4 { bottom: 10%; right: 12%; animation-delay: .5s; }
+
+/* =========================
+   PISTA
+========================= */
+
+#pista {
+    display: none;
+    min-height: 100vh;
+    padding: 60px 20px 80px;
+}
+
+.encabezado {
+    text-align: center;
+    max-width: 800px;
+    margin: auto auto 45px;
+}
+
+.encabezado h2 {
+    font-size: clamp(30px, 7vw, 55px);
+    color: #901414;
+    margin: 12px 0;
+}
+
+.encabezado p {
+    color: #675650;
+    line-height: 1.6;
+}
+
+.pista {
+    max-width: 1000px;
+    margin: auto;
+    position: relative;
+}
+
+.pista::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    transform: translateX(-50%);
+    background: repeating-linear-gradient(
+        to bottom,
+        #222 0 22px,
+        #fff 22px 44px
+    );
+    border-radius: 10px;
+}
+
+.tarjetas {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    position: relative;
+}
+
+.tarjeta {
+    width: min(430px, 90%);
+    padding: 28px;
+    background: rgba(255,255,255,.96);
+    border-radius: 25px;
+    box-shadow: 0 12px 35px rgba(60,30,20,.15);
+    cursor: pointer;
+    transition: .3s;
+    border: 2px solid rgba(170,20,20,.08);
+}
+
+.tarjeta:nth-child(odd) {
+    margin-right: auto;
+}
+
+.tarjeta:nth-child(even) {
+    margin-left: auto;
+}
+
+.tarjeta:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 18px 40px rgba(60,30,20,.22);
+}
+
+.icono {
+    font-size: 45px;
+    margin-bottom: 12px;
+}
+
+.tarjeta h3 {
+    color: #9e1717;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.tarjeta p {
+    color: #675650;
+    line-height: 1.5;
+}
+
+.toque {
+    margin-top: 15px;
+    color: #a81717;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* =========================
+   MODALES
+========================= */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(20,10,8,.75);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    backdrop-filter: blur(5px);
+}
+
+.modal.activo {
+    display: flex;
+    animation: aparecer .3s ease;
+}
+
+.modal-contenido {
+    width: min(650px, 100%);
+    max-height: 90vh;
+    overflow-y: auto;
+    background: #fff9f5;
+    border-radius: 28px;
+    padding: 30px;
+    position: relative;
+    box-shadow: 0 25px 70px rgba(0,0,0,.35);
+    animation: subir .4s ease;
+}
+
+.cerrar {
+    position: absolute;
+    right: 15px;
+    top: 12px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: #eadbd1;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.modal h2 {
+    color: #981515;
+    font-size: 30px;
+    margin-bottom: 18px;
+    padding-right: 40px;
+}
+
+.modal p {
+    color: #55443d;
+    line-height: 1.8;
+}
+
+/* =========================
+   FOTOS
+========================= */
+
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.foto {
+    height: 220px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #ead8cb;
+    border: 3px solid #ead0c0;
+    position: relative;
+}
+
+.foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.foto-vacia {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #805f51;
+    padding: 15px;
+    font-size: 14px;
+}
+
+/* =========================
+   RAZONES
+========================= */
+
+.razones {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.razon {
+    background: #f2e1d5;
+    padding: 16px;
+    border-radius: 16px;
+    color: #533f37;
+}
+
+/* =========================
+   AUTO
+========================= */
+
+.auto-grande {
+    text-align: center;
+    font-size: 100px;
+    margin: 20px 0;
+    animation: autoMover 2s infinite ease-in-out;
+}
+
+/* =========================
+   JUEGO
+========================= */
+
+.juego {
+    text-align: center;
+}
+
+.juego-area {
+    height: 300px;
+    margin: 20px 0;
+    border-radius: 20px;
+    background: repeating-linear-gradient(
+        90deg,
+        #222 0 35px,
+        #333 35px 70px
+    );
+    border: 5px solid #ddd;
+    position: relative;
+    overflow: hidden;
+}
+
+.auto-jugador {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 50px;
+    transition: left .12s linear;
+}
+
+.corazon-juego {
+    position: absolute;
+    top: -40px;
+    font-size: 32px;
+}
+
+.contador {
+    color: #9d1717;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.controles {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.control {
+    width: 60px;
+    height: 60px;
+    border: none;
+    border-radius: 50%;
+    background: #a71919;
+    color: white;
+    font-size: 25px;
+}
+
+/* =========================
+   FINAL
+========================= */
+
+#final {
+    display: none;
+    min-height: 100vh;
+    padding: 70px 25px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.final-contenido {
+    max-width: 750px;
+}
+
+.final-corazon {
+    font-size: 90px;
+    animation: latido 1.2s infinite;
+}
+
+.final-titulo {
+    color: #a71919;
+    font-size: clamp(38px, 8vw, 70px);
+    margin: 20px 0;
+}
+
+.final-texto {
+    color: #584740;
+    font-size: 19px;
+    line-height: 1.8;
+}
+
+.final-nombre {
+    margin-top: 25px;
+    color: #8e1515;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+/* =========================
+   ANIMACIONES
+========================= */
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes subir {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes autoMover {
+    0%,100% {
+        transform: translateX(-10px);
+    }
+    50% {
+        transform: translateX(10px);
+    }
+}
+
+@keyframes flotar {
+    0%,100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes latido {
+    0%,100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width:700px) {
+
+    .titulo-principal {
+        font-size: 43px;
+    }
+
+    .pista::before {
+        left: 20px;
+    }
+
+    .tarjeta,
+    .tarjeta:nth-child(odd),
+    .tarjeta:nth-child(even) {
+        margin-left: 45px;
+        margin-right: 0;
+        width: calc(100% - 45px);
+    }
+
+    .galeria {
+        grid-template-columns: 1fr;
+    }
+
+    .foto {
+        height: 280px;
+    }
+
+    .modal-contenido {
+        padding: 25px 18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     PORTADA
+========================= -->
+
+<section id="inicio">
+
+    <div class="decoracion d1">❤️</div>
+    <div class="decoracion d2">🏁</div>
+    <div class="decoracion d3">♡</div>
+    <div class="decoracion d4">❤️</div>
+
+    <div class="inicio-contenido">
+
+        <div class="mini-titulo">
+            UNA EXPERIENCIA HECHA PARA TI
+        </div>
+
+        <div class="auto-inicio">
+            🏎️
+        </div>
+
+        <h1 class="titulo-principal">
+            MI NIÑO DE<br>
+            OJITOS BONITOS
+        </h1>
+
+        <p class="subtitulo">
+            Mi niño precioso, tengo una pequeña sorpresa
+            preparada especialmente para ti. ❤️
+        </p>
+
+        <button class="boton" onclick="entrar()">
+            🏁 ARRANCAR
+        </button>
+
+    </div>
+</section>
+
+
+<!-- =========================
+     PISTA
+========================= -->
+
+<section id="pista">
+
+    <div class="encabezado">
+
+        <div style="font-size:50px;">🏁</div>
+
+        <h2>
+            TU RECORRIDO COMIENZA AQUÍ
+        </h2>
+
+        <p>
+            Cada estación guarda una pequeña parte
+            de esta sorpresa hecha especialmente para ti. ❤️
+        </p>
+
+    </div>
+
+
+    <div class="pista">
+
+        <div class="tarjetas">
+
+            <div class="tarjeta" onclick="abrir('amor')">
+
+                <div class="icono">❤️</div>
+
+                <h3>NUESTRO AMOR</h3>
+
+                <p>
+                    Una pequeña carta para recordarte
+                    lo especial que eres para mí.
+                </p>
+
+                <div class="toque">
+                    TOCA PARA ABRIR →
+                </div>
+
+            </div>
+
+
+            <div class="tarjeta" onclick="abrir('fotos')">
+
+                <div class="icono">📸</div>
+
+                <h3>NUESTROS MOMENTOS</h3>
+
+                <p>
+                    Algunos de nuestros recuerdos
+                    favoritos. ❤️
+                </p>
+
+                <div class="toque">
+                    TOCA PARA VER →
+                </div>
+
+            </div>
+
+
+            <div class="tarjeta" onclick="abrir('auto')">
+
+                <div class="icono">🏎️</div>
+
+                <h3>UNA PARADA ESPECIAL</h3>
+
+                <p>
+                    Porque una sorpresa inspirada en
+                    carreras necesita un pequeño auto.
+                </p>
+
+                <div class="toque">
+                    TOCA PARA ABRIR →
+                </div>
+
+            </div>
+
+
+            <div class="tarjeta" onclick="abrir('razones')">
+
+                <div class="icono">💌</div>
+
+                <h3>RAZONES POR LAS QUE TE QUIERO</h3>
+
+                <p>
+                    Algunas de las muchas razones por
+                    las que eres especial para mí.
+                </p>
+
+                <div class="toque">
+                    TOCA PARA DESCUBRIR →
+                </div>
+
+            </div>
+
+
+            <div class="tarjeta" onclick="abrirJuego()">
+
+                <div class="icono">🎮</div>
+
+                <h3>MINIJUEGO</h3>
+
+                <p>
+                    Maneja el auto y atrapa los
+                    corazones. ❤️
+                </p>
+
+                <div class="toque">
+                    TOCA PARA JUGAR →
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div style="text-align:center; margin-top:70px;">
+
+        <button class="boton" onclick="mostrarFinal()">
+            ❤️ LLEGAR A LA META
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MODAL AMOR
+========================= -->
+
+<div class="modal" id="modal-amor">
+
+    <div class="modal-contenido">
+
+        <button class="cerrar"
+                onclick="cerrarModal('modal-amor')">
+            ×
+        </button>
+
+        <h2>
+            Para mi niño de ojitos bonitos ❤️
+        </h2>
+
+        <p>
+
+            Quería hacerte algo diferente, algo que
+            pudiera guardar un poquito de todo lo que
+            siento por ti.
+
+            <br><br>
+
+            Puede que esta página parezca pequeña,
+            pero está hecha con muchísimo cariño.
+
+            <br><br>
+
+            Gracias por cada momento, cada sonrisa,
+            cada conversación y cada recuerdo.
+
+            <br><br>
+
+            Espero que cuando veas esto puedas sentir
+            aunque sea un poquito del cariño con el
+            que lo hice para ti.
+
+            <br><br>
+
+            ❤️ Con muchísimo cariño.
+
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     MODAL FOTOS
+========================= -->
+
+<div class="modal" id="modal-fotos">
+
+    <div class="modal-contenido">
+
+        <button class="cerrar"
+                onclick="cerrarModal('modal-fotos')">
+            ×
+        </button>
+
+        <h2>
+            Nuestros momentos 📸❤️
+        </h2>
+
+        <p>
+            Algunas fotos que hacen especial
+            esta pequeña sorpresa.
+        </p>
+
+
+        <div class="galeria">
+
+            <!-- FOTO 1 -->
+
+            <div class="foto">
+
+                <img
+                    src="20260627212758354.jpg"
+                    alt="Nuestro recuerdo"
+                    onerror="fotoNoDisponible(this)"
+                >
+
+            </div>
+
+
+            <!-- FOTO 2 -->
+
+            <div class="foto">
+
+                <img
+                    src="Snapchat-1779978659.jpg"
+                    alt="Nuestro recuerdo"
+                    onerror="fotoNoDisponible(this)"
+                >
+
+            </div>
+
+
+            <!-- FOTO 3 -->
+
+            <div class="foto">
+
+                <img
+                    src="Snapchat-2053245785.jp"
+                    alt="Nuestro recuerdo"
+                    onerror="probarJpg(this)"
+                >
+
+            </div>
+
+
+            <!-- FOTO 4 -->
+
+            <div class="foto">
+
+                <img
+                    src="Snapchat-295515892.jpg"
+                    alt="Nuestro recuerdo"
+                    onerror="fotoNoDisponible(this)"
+                >
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     MODAL AUTO
+========================= -->
+
+<div class="modal" id="modal-auto">
+
+    <div class="modal-contenido">
+
+        <button class="cerrar"
+                onclick="cerrarModal('modal-auto')">
+            ×
+        </button>
+
+        <h2>
+            Una parada especial 🏎️
+        </h2>
+
+        <div class="auto-grande">
+            🏎️
+        </div>
+
+        <p>
+
+            Porque una sorpresa inspirada en carreras
+            no podía quedarse sin un pequeño auto.
+
+            <br><br>
+
+            Esta parada es para recordarte que incluso
+            las cosas pequeñas pueden convertirse en
+            recuerdos enormes.
+
+            <br><br>
+
+            🏁 Sigue recorriendo la pista.
+
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     MODAL RAZONES
+========================= -->
+
+<div class="modal" id="modal-razones">
+
+    <div class="modal-contenido">
+
+        <button class="cerrar"
+                onclick="cerrarModal('modal-razones')">
+            ×
+        </button>
+
+        <h2>
+            Algunas razones 💌
+        </h2>
+
+        <div class="razones">
+
+            <div class="razon">
+                ❤️ Porque haces especiales los momentos simples.
+            </div>
+
+            <div class="razon">
+                ❤️ Porque me encanta compartir momentos contigo.
+            </div>
+
+            <div class="razon">
+                ❤️ Porque tienes una forma especial de hacerme sonreír.
+            </div>
+
+            <div class="razon">
+                ❤️ Porque cada recuerdo contigo tiene algo diferente.
+            </div>
+
+            <div class="razon">
+                ❤️ Porque simplemente eres tú.
+            </div>
+
+            <div class="razon">
+                ❤️ Porque eres mi niño de ojitos bonitos.
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     MODAL JUEGO
+========================= -->
+
+<div class="modal" id="modal-juego">
+
+    <div class="modal-contenido juego">
+
+        <button class="cerrar"
+                onclick="cerrarModal('modal-juego')">
+            ×
+        </button>
+
+        <h2>
+            Atrapa los corazones ❤️
+        </h2>
+
+        <p>
+            Mueve el auto y atrapa los corazones.
+        </p>
+
+        <br>
+
+        <div class="contador">
+            Corazones:
+            <span id="puntos">0</span> / 5
+        </div>
+
+        <div class="juego-area" id="juego-area">
+
+            <div class="auto-jugador" id="auto-jugador">
+                🏎️
+            </div>
+
+        </div>
+
+        <div class="controles">
+
+            <button class="control"
+                    onclick="moverAuto(-1)">
+                ◀
+            </button>
+
+            <button class="control"
+                    onclick="moverAuto(1)">
+                ▶
+            </button>
+
+        </div>
+
+        <button class="boton"
+                onclick="reiniciarJuego()">
+            🔄 REINICIAR
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     FINAL
+========================= -->
+
+<section id="final">
+
+    <div class="final-contenido">
+
+        <div class="final-corazon">
+            ❤️
+        </div>
+
+        <h2 class="final-titulo">
+            GRACIAS POR SER TÚ
+        </h2>
+
+        <p class="final-texto">
+
+            Espero que esta pequeña sorpresa
+            te haya sacado una sonrisa.
+
+            <br><br>
+
+            No necesitaba una ocasión especial
+            para hacerte algo bonito.
+
+            <br><br>
+
+            Solo quería recordarte lo especial
+            que eres para mí. ❤️
+
+        </p>
+
+        <div class="final-nombre">
+
+            TE QUIERO MUCHÍSIMO,<br>
+            MI NIÑO DE OJITOS BONITOS ❤️
+
+        </div>
+
+        <button class="boton"
+                onclick="volverInicio()">
+
+            🏁 VOLVER A EMPEZAR
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+/* ARRANCAR */
+
+function entrar() {
+
+    document.getElementById("inicio").style.display = "none";
+
+    document.getElementById("pista").style.display = "block";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+/* ABRIR MODAL */
+
+function abrir(tipo) {
+
+    const modal = document.getElementById("modal-" + tipo);
+
+    if (modal) {
+
+        modal.classList.add("activo");
+
+        document.body.style.overflow = "hidden";
+    }
+}
+
+
+/* CERRAR MODAL */
+
+function cerrarModal(id) {
+
+    const modal = document.getElementById(id);
+
+    if (modal) {
+
+        modal.classList.remove("activo");
+
+        document.body.style.overflow = "";
+    }
+}
+
+
+/* CERRAR TOCANDO FUERA */
+
+document.querySelectorAll(".modal").forEach(function(modal) {
+
+    modal.addEventListener("click", function(event) {
+
+        if (event.target === modal) {
+
+            cerrarModal(modal.id);
+        }
+    });
+});
+
+
+/* SI UNA FOTO NO EXISTE */
+
+function fotoNoDisponible(imagen) {
+
+    imagen.style.display = "none";
+
+    imagen.parentElement.innerHTML =
+        '<div class="foto-vacia">❤️<br><br>Recuerdo especial</div>';
+}
+
+
+/* POR SI LA TERCERA FOTO ES .jpg */
+
+function probarJpg(imagen) {
+
+    if (!imagen.dataset.proboJpg) {
+
+        imagen.dataset.proboJpg = "true";
+
+        imagen.src = "Snapchat-2053245785.jpg";
+
+    } else {
+
+        fotoNoDisponible(imagen);
+    }
+}
+
+
+/* =========================
+   JUEGO
+========================= */
+
+let puntos = 0;
+let posicionAuto = 50;
+let intervaloJuego = null;
+let juegoActivo = false;
+
+
+function abrirJuego() {
+
+    document.getElementById("modal-juego")
+        .classList.add("activo");
+
+    document.body.style.overflow = "hidden";
+
+    reiniciarJuego();
+}
+
+
+function moverAuto(direccion) {
+
+    posicionAuto += direccion * 10;
+
+    if (posicionAuto < 10) {
+        posicionAuto = 10;
+    }
+
+    if (posicionAuto > 90) {
+        posicionAuto = 90;
+    }
+
+    document.getElementById("auto-jugador")
+        .style.left = posicionAuto + "%";
+}
+
+
+function reiniciarJuego() {
+
+    puntos = 0;
+
+    posicionAuto = 50;
+
+    juegoActivo = true;
+
+    document.getElementById("puntos").textContent = puntos;
+
+    document.getElementById("auto-jugador")
+        .style.left = "50%";
+
+    if (intervaloJuego) {
+        clearInterval(intervaloJuego);
+    }
+
+    intervaloJuego =
+        setInterval(crearCorazon, 1000);
+}
+
+
+function crearCorazon() {
+
+    if (!juegoActivo) {
+        return;
+    }
+
+    const area =
+        document.getElementById("juego-area");
+
+    const corazon =
+        document.createElement("div");
+
+    corazon.className = "corazon-juego";
+
+    corazon.textContent = "❤️";
+
+    corazon.style.left =
+        (Math.random() * 85 + 5) + "%";
+
+    area.appendChild(corazon);
+
+    let posicion = -40;
+
+    const movimiento =
+        setInterval(function() {
+
+            posicion += 4;
+
+            corazon.style.top =
+                posicion + "px";
+
+            const rectCorazon =
+                corazon.getBoundingClientRect();
+
+            const rectAuto =
+                document.getElementById("auto-jugador")
+                .getBoundingClientRect();
+
+            const choque =
+                rectCorazon.left < rectAuto.right &&
+                rectCorazon.right > rectAuto.left &&
+                rectCorazon.top < rectAuto.bottom &&
+                rectCorazon.bottom > rectAuto.top;
+
+            if (choque) {
+
+                puntos++;
+
+                document.getElementById("puntos")
+                    .textContent = puntos;
+
+                clearInterval(movimiento);
+
+                corazon.remove();
+
+                if (puntos >= 5) {
+
+                    juegoActivo = false;
+
+                    clearInterval(intervaloJuego);
+
+                    setTimeout(function() {
+
+                        alert(
+                            "¡Llegaste a 5 corazones! ❤️🏁"
+                        );
+
+                    }, 200);
+                }
+            }
+
+            if (posicion > 320) {
+
+                clearInterval(movimiento);
+
+                corazon.remove();
+            }
+
+        }, 40);
+}
+
+
+/* META FINAL */
+
+function mostrarFinal() {
+
+    document.getElementById("pista")
+        .style.display = "none";
+
+    document.getElementById("final")
+        .style.display = "flex";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+/* VOLVER */
+
+function volverInicio() {
+
+    document.getElementById("final")
+        .style.display = "none";
+
+    document.getElementById("inicio")
+        .style.display = "flex";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+
+/* TECLADO */
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "ArrowLeft") {
+        moverAuto(-1);
+    }
+
+    if (event.key === "ArrowRight") {
+        moverAuto(1);
+    }
+
+    if (event.key === "Escape") {
+
+        document.querySelectorAll(".modal")
+            .forEach(function(modal) {
+
+                modal.classList.remove("activo");
+
+            });
+
+        document.body.style.overflow = "";
+    }
+
+});
+
+</script>
+
+</body>
+    </html>
