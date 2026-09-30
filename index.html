@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Para William ❤️</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap');
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+:root{
+    --beige:#e8dfd2;
+    --cream:#f8f5ef;
+    --white:#ffffff;
+    --red:#a51d2d;
+    --darkred:#70111c;
+    --black:#171717;
+    --gray:#555;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Montserrat',sans-serif;
+    background:var(--cream);
+    color:var(--black);
+    overflow-x:hidden;
+}
+
+/* =========================
+   PANTALLA DE INICIO
+========================= */
+
+#inicio{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 50% 30%, rgba(165,29,45,.20), transparent 35%),
+        linear-gradient(135deg,#f7f2ea,#ddd1c2);
+}
+
+.luces{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    background:
+        radial-gradient(circle at 20% 20%,rgba(165,29,45,.18),transparent 18%),
+        radial-gradient(circle at 80% 70%,rgba(165,29,45,.13),transparent 20%);
+}
+
+.contenido-inicio{
+    text-align:center;
+    padding:30px;
+    max-width:650px;
+    position:relative;
+    z-index:2;
+}
+
+.mini{
+    letter-spacing:5px;
+    font-size:12px;
+    font-weight:700;
+    color:var(--red);
+    margin-bottom:15px;
+}
+
+.titulo{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(48px,13vw,100px);
+    line-height:.9;
+    margin-bottom:20px;
+}
+
+.titulo span{
+    color:var(--red);
+}
+
+.subtitulo{
+    font-size:15px;
+    line-height:1.7;
+    color:#555;
+    max-width:450px;
+    margin:auto;
+}
+
+.boton{
+    border:none;
+    padding:16px 30px;
+    border-radius:50px;
+    background:var(--red);
+    color:white;
+    font-weight:800;
+    letter-spacing:1px;
+    margin-top:30px;
+    cursor:pointer;
+    box-shadow:0 12px 30px rgba(112,17,28,.25);
+    transition:.3s;
+}
+
+.boton:hover{
+    transform:translateY(-3px) scale(1.02);
+}
+
+/* AUTO */
+
+.auto{
+    position:absolute;
+    font-size:65px;
+    animation:conducir 7s linear infinite;
+    bottom:18%;
+    left:-100px;
+    filter:drop-shadow(0 10px 10px rgba(0,0,0,.25));
+}
+
+@keyframes conducir{
+    0%{left:-120px;transform:scaleX(1)}
+    49%{left:105%;transform:scaleX(1)}
+    50%{transform:scaleX(-1)}
+    99%{left:-120px;transform:scaleX(-1)}
+    100%{transform:scaleX(1)}
+}
+
+/* =========================
+   PISTA
+========================= */
+
+#pista{
+    min-height:100vh;
+    padding:70px 20px;
+    background:var(--cream);
+}
+
+.encabezado{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.encabezado small{
+    color:var(--red);
+    font-weight:800;
+    letter-spacing:3px;
+}
+
+.encabezado h2{
+    font-family:'Playfair Display',serif;
+    font-size:42px;
+    margin:10px 0;
+}
+
+.encabezado p{
+    color:#666;
+}
+
+/* PROGRESO */
+
+.progreso-contenedor{
+    max-width:600px;
+    margin:0 auto 45px;
+}
+
+.progreso-texto{
+    display:flex;
+    justify-content:space-between;
+    font-size:12px;
+    font-weight:700;
+    margin-bottom:8px;
+}
+
+.progreso{
+    height:8px;
+    background:#ddd3c7;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progreso-barra{
+    height:100%;
+    width:0%;
+    background:var(--red);
+    transition:.5s;
+}
+
+/* TARJETAS */
+
+.estaciones{
+    max-width:900px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:18px;
+}
+
+.tarjeta{
+    background:white;
+    border:1px solid #e5ddd3;
+    border-radius:24px;
+    padding:28px 22px;
+    cursor:pointer;
+    transition:.35s;
+    box-shadow:0 10px 30px rgba(0,0,0,.05);
+    position:relative;
+    overflow:hidden;
+}
+
+.tarjeta:hover{
+    transform:translateY(-7px);
+    box-shadow:0 20px 40px rgba(0,0,0,.10);
+}
+
+.tarjeta .icono{
+    font-size:35px;
+    margin-bottom:15px;
+}
+
+.tarjeta h3{
+    font-size:17px;
+    margin-bottom:8px;
+}
+
+.tarjeta p{
+    font-size:13px;
+    color:#777;
+    line-height:1.5;
+}
+
+.completado{
+    position:absolute;
+    top:15px;
+    right:15px;
+    font-size:12px;
+    color:var(--red);
+    display:none;
+}
+
+.tarjeta.hecho .completado{
+    display:block;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(20,15,15,.65);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    z-index:100;
+    backdrop-filter:blur(7px);
+}
+
+.modal.activo{
+    display:flex;
+}
+
+.modal-contenido{
+    background:var(--cream);
+    width:min(550px,100%);
+    max-height:85vh;
+    overflow:auto;
+    border-radius:28px;
+    padding:35px 25px;
+    position:relative;
+    animation:aparecer .35s ease;
+}
+
+@keyframes aparecer{
+    from{
+        opacity:0;
+        transform:scale(.9) translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:scale(1) translateY(0);
+    }
+}
+
+.cerrar{
+    position:absolute;
+    right:18px;
+    top:15px;
+    border:none;
+    background:#e5ddd3;
+    width:35px;
+    height:35px;
+    border-radius:50%;
+    cursor:pointer;
+    font-size:18px;
+}
+
+.modal h2{
+    font-family:'Playfair Display',serif;
+    font-size:32px;
+    margin-bottom:20px;
+    color:var(--red);
+}
+
+.carta{
+    line-height:1.9;
+    color:#444;
+    font-size:15px;
+}
+
+/* =========================
+   FOTOS
+========================= */
+
+.galeria{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+}
+
+.foto{
+    aspect-ratio:1;
+    border-radius:18px;
+    background:#ded5c9;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#777;
+    font-size:12px;
+    overflow:hidden;
+}
+
+.foto img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* =========================
+   MINIJUEGO
+========================= */
+
+.juego{
+    text-align:center;
+}
+
+.pista-juego{
+    height:180px;
+    background:
+        repeating-linear-gradient(
+            0deg,
+            #333 0px,
+            #333 40px,
+            #292929 40px,
+            #292929 80px
+        );
+    border-radius:20px;
+    position:relative;
+    overflow:hidden;
+    margin:20px 0;
+}
+
+.linea{
+    position:absolute;
+    width:100%;
+    height:4px;
+    background:#eee;
+    top:50%;
+}
+
+.auto-juego{
+    position:absolute;
+    font-size:50px;
+    left:15px;
+    top:65px;
+    transition:.2s;
+}
+
+.meta{
+    position:absolute;
+    right:20px;
+    top:0;
+    height:100%;
+    width:12px;
+    background:repeating-linear-gradient(
+        45deg,
+        white 0 10px,
+        black 10px 20px
+    );
+}
+
+#mensajeJuego{
+    font-weight:700;
+    color:var(--red);
+    min-height:25px;
+}
+
+/* =========================
+   FINAL
+========================= */
+
+#final{
+    min-height:100vh;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:30px;
+    background:
+        radial-gradient(circle at center,rgba(165,29,45,.15),transparent 45%),
+        var(--cream);
+}
+
+.final-contenido{
+    max-width:650px;
+}
+
+.final-contenido h1{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(45px,12vw,85px);
+    color:var(--red);
+}
+
+.final-contenido p{
+    line-height:1.9;
+    color:#555;
+    margin-top:20px;
+}
+
+.corazones{
+    font-size:40px;
+    margin:20px;
+    animation:latir 1.2s infinite;
+}
+
+@keyframes latir{
+    50%{transform:scale(1.2)}
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:600px){
+
+    .encabezado h2{
+        font-size:34px;
+    }
+
+    .estaciones{
+        grid-template-columns:1fr;
+    }
+
+    .titulo{
+        font-size:60px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     INICIO
+========================= -->
+
+<section id="inicio">
+
+    <div class="luces"></div>
+
+    <div class="contenido-inicio">
+
+        <div class="mini">UNA EXPERIENCIA HECHA PARA TI</div>
+
+        <h1 class="titulo">
+            WILLIAM<br>
+            <span>🏎️</span>
+        </h1>
+
+        <p class="subtitulo">
+            Mi niño precioso, tengo una pequeña sorpresa
+            preparada especialmente para ti.
+        </p>
+
+        <button class="boton" onclick="entrar()">
+            🏁 ARRANCAR
+        </button>
+
+    </div>
+
+    <div class="auto">🏎️</div>
+
+</section>
+
+
+<!-- =========================
+     PISTA PRINCIPAL
+========================= -->
+
+<section id="pista">
+
+    <div class="encabezado">
+
+        <small>THE WILLIAM EXPERIENCE</small>
+
+        <h2>Bienvenido a tu pista</h2>
+
+        <p>
+            Completa cada estación para descubrir tu sorpresa.
+        </p>
+
+    </div>
+
+
+    <div class="progreso-contenedor">
+
+        <div class="progreso-texto">
+            <span>PROGRESO</span>
+            <span id="contador">0 / 5</span>
+        </div>
+
+        <div class="progreso">
+            <div class="progreso-barra" id="barra"></div>
+        </div>
+
+    </div>
+
+
+    <div class="estaciones">
+
+        <div class="tarjeta" onclick="abrir('amor',this)">
+            <span class="completado">✓ LISTO</span>
+            <div class="icono">💌</div>
+            <h3>Box de amor</h3>
+            <p>Hay algo que quiero decirte.</p>
+        </div>
+
+
+        <div class="tarjeta" onclick="abrir('fotos',this)">
+            <span class="completado">✓ LISTO</span>
+            <div class="icono">📸</div>
+            <h3>Nuestros recuerdos</h3>
+            <p>Un pequeño lugar para nuestros momentos.</p>
+        </div>
+
+
+        <div class="tarjeta" onclick="abrir('auto',this)">
+            <span class="completado">✓ LISTO</span>
+            <div class="icono">🏎️</div>
+            <h3>El auto de William</h3>
+            <p>Una máquina para mi piloto favorito.</p>
+        </div>
+
+
+        <div class="tarjeta" onclick="abrir('razones',this)">
+            <span class="completado">✓ LISTO</span>
+            <div class="icono">❤️</div>
+            <h3>Por qué tú</h3>
+            <p>Abre para descubrirlo.</p>
+        </div>
+
+
+        <div class="tarjeta" onclick="abrirJuego(this)">
+            <span class="completado">✓ LISTO</span>
+            <div class="icono">🎮</div>
+            <h3>Reto del piloto</h3>
+            <p>¿Puedes llegar a la meta?</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FINAL
+========================= -->
+
+<section id="final">
+
+    <div class="final-contenido">
+
+        <div class="corazones">❤️ 🏁 ❤️</div>
+
+        <h1>META<br>ALCANZADA</h1>
+
+        <p>
+            Mi niño precioso, te amo muchísimo.
+            Tienes unos ojitos preciosos y quiero que nunca
+            olvides algo:
+            <br><br>
+            <strong>
+            jamás, jamás en la vida serás espectador.
+            </strong>
+            <br><br>
+            Aunque estemos lejos, siempre voy a encontrar
+            una manera de hacerte llegar un poquito de mi amor.
+        </p>
+
+        <div class="corazones">🏎️ ❤️ 🏎️</div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MODAL
+========================= -->
+
+<div class="modal" id="modal">
+
+    <div class="modal-contenido">
+
+        <button class="cerrar" onclick="cerrar()">×</button>
+
+        <div id="modalContenido"></div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+let completadas = 0;
+const total = 5;
+
+
+/* =========================
+   ENTRAR
+========================= */
+
+function entrar(){
+
+    document.getElementById("pista")
+    .scrollIntoView({behavior:"smooth"});
+
+}
+
+
+/* =========================
+   ABRIR MODAL
+========================= */
+
+function abrir(tipo, tarjeta){
+
+    if(!tarjeta.classList.contains("hecho")){
+
+        tarjeta.classList.add("hecho");
+
+        completadas++;
+
+        actualizarProgreso();
+
+    }
+
+    let contenido = "";
+
+
+    if(tipo === "amor"){
+
+        contenido = `
+
+        <h2>💌 Para mi niño precioso</h2>
+
+        <div class="carta">
+
+        William...
+
+        <br><br>
+
+        Quiero que sepas que te amo muchísimo.
+        No importa la distancia ni los kilómetros que existan
+        entre nosotros.
+
+        <br><br>
+
+        Me encanta poder compartir mi vida contigo,
+        reír contigo, hablar contigo y crear recuerdos
+        aunque muchas veces sea desde lejos.
+
+        <br><br>
+
+        Tienes unos ojitos preciosos y espero que nunca
+        olvides lo especial que eres para mí.
+
+        <br><br>
+
+        Y recuerda algo...
+
+        <br><br>
+
+        <strong>
+        Jamás jamás en la vida serás espectador. ❤️
+        </strong>
+
+        <br><br>
+
+        Con muchísimo amor,
+
+        <br>
+
+        tu piecito de queso y tu osito cariñosito. 🧸❤️
+
+        </div>
+
+        `;
+
+    }
+
+
+    if(tipo === "fotos"){
+
+        contenido = `
+
+        <h2>📸 Nuestros recuerdos</h2>
+
+        <div class="galeria">
+
+            <div class="foto">📷 FOTO 1</div>
+
+            <div class="foto">📷 FOTO 2</div>
+
+            <div class="foto">📷 FOTO 3</div>
+
+            <div class="foto">📷 FOTO 4</div>
+
+        </div>
+
+        <p style="margin-top:20px;text-align:center;color:#777;">
+        Aquí vamos a colocar nuestras cuatro fotos. ❤️
+        </p>
+
+        `;
+
+    }
+
+
+    if(tipo === "auto"){
+
+        contenido = `
+
+        <h2>🏎️ Para mi piloto</h2>
+
+        <div style="font-size:90px;text-align:center;">
+        🏎️
+        </div>
+
+        <p style="text-align:center;line-height:1.8;">
+
+        No necesitas tener un Hot Wheels favorito...
+
+        <br><br>
+
+        porque esta sección es para recordarte
+        que para mí siempre vas a ser
+        <strong>mi piloto favorito.</strong> ❤️
+
+        <br><br>
+
+        Y obviamente tenía que ser un carro
+        digno de William.
+
+        </p>
+
+        `;
+
+    }
+
+
+    if(tipo === "razones"){
+
+        contenido = `
+
+        <h2>❤️ Por qué tú</h2>
+
+        <div class="carta">
+
+        ✦ Porque eres tú.
+
+        <br><br>
+
+        ✦ Porque tienes unos ojitos preciosos.
+
+        <br><br>
+
+        ✦ Porque me haces sentir querida.
+
+        <br><br>
+
+        ✦ Porque incluso desde lejos puedes
+        hacerme sonreír.
+
+        <br><br>
+
+        ✦ Porque amo llamarte
+        <strong>mi niño precioso.</strong>
+
+        <br><br>
+
+        ✦ Y porque entre tantas personas,
+        mi corazón te eligió a ti. ❤️
+
+        </div>
+
+        `;
+
+    }
+
+
+    document.getElementById("modalContenido").innerHTML = contenido;
+
+    document.getElementById("modal").classList.add("activo");
+
+}
+
+
+/* =========================
+   CERRAR
+========================= */
+
+function cerrar(){
+
+    document.getElementById("modal").classList.remove("activo");
+
+}
+
+
+/* =========================
+   PROGRESO
+========================= */
+
+function actualizarProgreso(){
+
+    document.getElementById("contador").innerText =
+    completadas + " / " + total;
+
+    document.getElementById("barra").style.width =
+    (completadas / total * 100) + "%";
+
+    if(completadas >= total){
+
+        setTimeout(() => {
+
+            document.getElementById("final").style.display="flex";
+
+            document.getElementById("final")
+            .scrollIntoView({behavior:"smooth"});
+
+            confeti();
+
+        },700);
+
+    }
+
+}
+
+
+/* =========================
+   JUEGO
+========================= */
+
+function abrirJuego(tarjeta){
+
+    if(!tarjeta.classList.contains("hecho")){
+
+        tarjeta.classList.add("hecho");
+
+        completadas++;
+
+        actualizarProgreso();
+
+    }
+
+    document.getElementById("modalContenido").innerHTML = `
+
+        <h2>🎮 Reto del piloto</h2>
+
+        <div class="juego">
+
+            <p>
+            Presiona el botón hasta que tu auto
+            llegue a la meta.
+            </p>
+
+            <div class="pista-juego">
+
+                <div class="linea"></div>
+
+                <div class="auto-juego" id="autoJuego">
+                🏎️
+                </div>
+
+                <div class="meta"></div>
+
+            </div>
+
+            <div id="mensajeJuego"></div>
+
+            <button class="boton" onclick="avanzar()">
+            🏎️ ACELERAR
+            </button>
+
+        </div>
+
+    `;
+
+    document.getElementById("modal").classList.add("activo");
+
+}
+
+
+let posicion=15;
+
+function avanzar(){
+
+    posicion += 12;
+
+    const auto =
+    document.getElementById("autoJuego");
+
+    if(posicion >= 75){
+
+        posicion=75;
+
+        document.getElementById("mensajeJuego")
+        .innerText="🏁 ¡LLEGASTE A LA META, PILOTO! ❤️";
+
+    }
+
+    auto.style.left=posicion+"%";
+
+}
+
+
+/* =========================
+   CONFETI
+========================= */
+
+function confeti(){
+
+    for(let i=0;i<60;i++){
+
+        const pieza=document.createElement("div");
+
+        pieza.innerHTML="❤️";
+
+        pieza.style.position="fixed";
+        pieza.style.left=Math.random()*100+"vw";
+        pieza.style.top="-20px";
+        pieza.style.fontSize=(10+Math.random()*20)+"px";
+        pieza.style.zIndex="999";
+
+        document.body.appendChild(pieza);
+
+        let velocidad=2+Math.random()*4;
+        let posicion=-20;
+
+        const animacion=setInterval(()=>{
+
+            posicion+=velocidad;
+
+            pieza.style.top=posicion+"px";
+
+            if(posicion>window.innerHeight){
+
+                clearInterval(animacion);
+                pieza.remove();
+
+            }
+
+        },20);
+
+    }
+
+}
+
+</script>
+
+</body>
+  </html>
